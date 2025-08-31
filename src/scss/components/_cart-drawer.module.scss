@@ -1,0 +1,321 @@
+// CartDrawer.module.scss
+$drawer-width: 420px;
+$mobile-breakpoint: 768px;
+
+// Цветовая палитра
+$primary: #3582ff;
+$primary-hover: #2b4de5;
+$secondary: #2D3748;
+$accent: #48BB78;
+$danger: #3e52e5;
+$border: #E2E8F0;
+$background: #FFFFFF;
+$text-primary: #1A202C;
+$text-secondary: #718096;
+$shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+
+// Размеры
+$spacing-xs: 8px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$border-radius: 12px;
+
+.cartDrawer {
+  position: fixed;
+  top: 0;
+  right: -$drawer-width;
+  width: $drawer-width;
+  height: 100vh;
+  z-index: 1000;
+  transition: right 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  background: $background;
+  box-shadow: $shadow;
+  display: flex;
+  flex-direction: column;
+
+  &.open {
+    right: 0;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    width: 100%;
+    right: -100%;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding: 0;
+}
+
+// Заголовок
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: $spacing-lg $spacing-lg $spacing-md;
+  border-bottom: 1px solid $border;
+  background: $background;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+
+.title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: $text-primary;
+  margin: 0;
+}
+
+.closeBtn {
+  background: none;
+  border: none;
+  padding: $spacing-xs;
+  border-radius: 50%;
+  cursor: pointer;
+  color: $text-secondary;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: #F7FAFC;
+    color: $text-primary;
+  }
+}
+
+// Список товаров
+.items {
+  flex: 1;
+  overflow-y: auto;
+  padding: $spacing-md $spacing-lg;
+}
+
+.emptyCart {
+  text-align: center;
+  padding: $spacing-xl 0;
+  color: $text-secondary;
+
+  svg {
+    margin-bottom: $spacing-md;
+    opacity: 0.5;
+  }
+
+  p {
+    font-size: 1.1rem;
+    margin: 0;
+    font-weight: 500;
+  }
+}
+
+// Элемент корзины
+.item {
+  display: flex;
+  align-items: center;
+  padding: $spacing-md 0;
+  border-bottom: 1px solid $border;
+  gap: $spacing-md;
+
+  &:last-child {
+    border-bottom: none;
+  }
+}
+
+.itemImageContainer {
+  flex-shrink: 0;
+}
+
+.itemImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.itemContent {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-sm;
+}
+
+.itemDetails {
+  h4 {
+    margin: 0 0 $spacing-xs 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-primary;
+    line-height: 1.4;
+  }
+}
+
+.itemPrice {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $primary;
+}
+
+.itemControls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: $spacing-md;
+}
+
+.quantityControls {
+  display: flex;
+  align-items: center;
+  background: #F7FAFC;
+  border-radius: 20px;
+  padding: $spacing-xs;
+  gap: $spacing-sm;
+}
+
+.quantityBtn {
+  background: $background;
+  border: 1px solid $border;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: $text-primary;
+
+  &:hover:not(:disabled) {
+    background: $primary;
+    color: white;
+    border-color: $primary;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.quantity {
+  font-weight: 600;
+  min-width: 24px;
+  text-align: center;
+  color: $text-primary;
+}
+
+.removeBtn {
+  background: none;
+  border: none;
+  padding: $spacing-xs;
+  border-radius: 6px;
+  cursor: pointer;
+  color: $text-secondary;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: #FED7D7;
+    color: $danger;
+  }
+}
+
+// Футер
+.footer {
+  margin-top: auto;
+  padding: $spacing-lg;
+  background: $background;
+  border-top: 1px solid $border;
+  position: sticky;
+  bottom: 0;
+}
+
+.total {
+  margin-bottom: $spacing-lg;
+}
+
+.totalRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: $text-primary;
+}
+
+.totalPrice {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: $primary;
+}
+
+.checkoutBtn {
+  width: 100%;
+  padding: $spacing-md $spacing-lg;
+  background: $primary;
+  color: white;
+  border: none;
+  border-radius: $border-radius;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: $spacing-sm;
+
+  &:hover {
+    background: $primary-hover;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba($primary, 0.3);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Анимации
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.animateSlide {
+  animation: slideIn 0.4s ease forwards;
+}
+
+// Плавный скролл
+.items {
+  scroll-behavior: smooth;
+  
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  
+  &::-webkit-scrollbar-track {
+    background: #F7FAFC;
+  }
+  
+  &::-webkit-scrollbar-thumb {
+    background: #CBD5E0;
+    border-radius: 3px;
+  }
+  
+  &::-webkit-scrollbar-thumb:hover {
+    background: #A0AEC0;
+  }
+}

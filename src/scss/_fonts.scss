@@ -1,0 +1,43 @@
+// Подключаем шрифт Montserrat (если ещё не подключён)
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+// Миксин для создания классов Montserrat
+@mixin montserrat-class($name, $weight) {
+  .montserrat-#{$name} {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: $weight;
+    font-style: normal;
+  }
+
+  .montserrat-#{$name}-italic {
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: $weight;
+    font-style: italic;
+  }
+}
+
+// Список весов и имён
+$montserrat-weights: (
+  thin: 100,
+  extralight: 200,
+  light: 300,
+  regular: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700,
+  extrabold: 800,
+  black: 900
+);
+
+// Генерация всех классов
+@include montserrat-class(thin, 100);
+@include montserrat-class(extralight, 200);
+@include montserrat-class(light, 300);
+@include montserrat-class(regular, 400);
+@include montserrat-class(medium, 500);
+@include montserrat-class(semibold, 600);
+@include montserrat-class(bold, 700);
+@include montserrat-class(extrabold, 800);
+@include montserrat-class(black, 900);
