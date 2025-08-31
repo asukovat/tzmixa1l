@@ -1,0 +1,163 @@
+[
+  {
+    "id": 0,
+    "imageUrl": "https://media.dodostatic.net/image/r:292x292/01976092e7fb7485a740a06869aa79f8.avif",
+    "title": "Пепперони",
+    "types": [0, 1],
+    "sizes": [26, 30, 40],
+    "price": 803,
+    "category": 1,
+    "rating": 4
+  },
+  {
+    "id": 1,
+    "imageUrl": "https://media.dodostatic.net/image/r:292x292/01976092e7fb7485a740a06869aa79f8.avif",
+    "title": "Сырная",
+    "types": [0],
+    "sizes": [26, 30],
+    "price": 750,
+    "category": 1,
+    "rating": 4.5
+  },
+  {
+    "id": 3,
+    "imageUrl": "https://media.dodostatic.net/image/r:292x292/01976092e7fb7485a740a06869aa79f8.avif",
+    "title": "Пепперони",
+    "types": [0, 1],
+    "sizes": [26, 30, 40],
+    "price": 803,
+    "category": 1,
+    "rating": 4
+  },
+  {
+    "id": 4,
+    "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf3e424371b49f0b8d7dbe320a70.avif",
+    "title": "Сырная",
+    "types": [0],
+    "sizes": [26, 30],
+    "price": 750,
+    "category": 1,
+    "rating": 4.5
+  },
+  {
+    "id": 5,
+    "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf3e424371b49f0b8d7dbe320a70.avif",
+    "title": "Пепперони",
+    "types": [0, 1],
+    "sizes": [26, 30, 40],
+    "price": 803,
+    "category": 1,
+    "rating": 4
+  },
+  {
+    "id": 6,
+    "imageUrl": "https://media.dodostatic.net/image/r:292x292/0198bf3e424371b49f0b8d7dbe320a70.avif",
+    "title": "Сырная",
+    "types": [0],
+    "sizes": [26, 30],
+    "price": 750,
+    "category": 1,
+    "rating": 4.5
+  },
+
+  {
+    "id": 2,
+    "imageUrl": "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/97a/1008_800_048a/81223400299.jpg",
+    "title": "Футболка",
+    "types": [],
+    "sizes": ["S", "M", "L"],
+    "price": 1500,
+    "category": 2,
+    "rating": 4.2
+  },
+  {
+    "id": 7,
+    "imageUrl": "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/97a/1008_800_048a/81223400299.jpg",
+    "title": "Футболка",
+    "types": [],
+    "sizes": ["S", "M", "L"],
+    "price": 1500,
+    "category": 2,
+    "rating": 4.2
+  },
+  {
+    "id": 8,
+    "imageUrl": "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/97a/1008_800_048a/81223400299.jpg",
+    "title": "Футболка",
+    "types": [],
+    "sizes": ["S", "M", "L"],
+    "price": 1500,
+    "category": 2,
+    "rating": 4.2
+  },
+  {
+    "id": 9,
+    "imageUrl": "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/97a/1008_800_048a/81223400299.jpg",
+    "title": "Футболка",
+    "types": [],
+    "sizes": ["S", "M", "L"],
+    "price": 1500,
+    "category": 2,
+    "rating": 4.2
+  },
+  {
+    "id": 10,
+    "imageUrl": "https://cdn.sportmaster.ru/upload/mdm/media_content/resize/97a/1008_800_048a/81223400299.jpg",
+    "title": "Футболка",
+    "types": [],
+    "sizes": ["S", "M", "L"],
+    "price": 1500,
+    "category": 2,
+    "rating": 4.2
+  },
+  {
+    "id": 11,
+    "imageUrl": "https://ipiter.ru/upl/modules/shop/900/b8p8c89hqi.jpg",
+    "title": "Смартфон Xiaomi Redmi Note 13",
+    "types": [],
+    "sizes": [],
+    "price": 18990,
+    "category": 3,
+    "rating": 4.7
+  },
+  {
+    "id": 12,
+    "imageUrl": "https://ipiter.ru/upl/modules/shop/900/b8p8c89hqi.jpg",
+    "title": "Наушники Apple AirPods Pro",
+    "types": [],
+    "sizes": [],
+    "price": 22990,
+    "category": 3,
+    "rating": 4.8
+  },
+  {
+    "id": 13,
+    "imageUrl": "https://ipiter.ru/upl/modules/shop/900/b8p8c89hqi.jpg",
+    "title": "Умные часы Samsung Galaxy Watch 6",
+    "types": [],
+    "sizes": [],
+    "price": 25990,
+    "category": 3,
+    "rating": 4.6
+  },
+  {
+    "id": 14,
+    "imageUrl": "https://ipiter.ru/upl/modules/shop/900/b8p8c89hqi.jpg",
+    "title": "Планшет Lenovo Tab P11",
+    "types": [],
+    "sizes": [],
+    "price": 19490,
+    "category": 3,
+    "rating": 4.4
+  },
+  {
+    "id": 15,
+    "imageUrl": "https://ipiter.ru/upl/modules/shop/900/b8p8c89hqi.jpg",
+    "title": "Пылесос робот Xiaomi Mi Robot",
+    "types": [],
+    "sizes": [],
+    "price": 27990,
+    "category": 3,
+    "rating": 4.5
+  }
+]

@@ -1,0 +1,15 @@
+.cart-item-block {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); // 3 равные колонки
+  gap: 30px; // отступ между карточками
+  margin-top: 40px;
+
+  // Адаптивность
+  @media (max-width: 1024px) {
+    grid-template-columns: repeat(2, 1fr); // 2 колонки на планшетах
+  }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr; // 1 колонка на мобильных
+  }
+}
