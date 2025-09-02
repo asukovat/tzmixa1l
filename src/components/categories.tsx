@@ -3,10 +3,11 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setActiveCategory } from '../redux/slices/filterSlice'; 
 import { RootState } from '../redux/store';
 
+import { CATEGORIES } from '../constants';
+
 const Categories: React.FC = () => {
   const dispatch = useDispatch();
   const activeCategory = useSelector((state: RootState) => state.filter.activeCategory);
-  const categories: string[] = ['Еда', 'Одежда', 'Электроника'];
 
   const handleCategoryClick = (category: string): void => {
     dispatch(setActiveCategory(category));
@@ -15,7 +16,7 @@ const Categories: React.FC = () => {
   return (
     <div className="categories">
       <ul>
-        {categories.map((category) => (
+        {CATEGORIES.map((category) => (
           <li
             key={category}
             className={activeCategory === category ? 'active' : ''}

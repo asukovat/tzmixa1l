@@ -1,15 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { calcTotalPrice } from '../../utils/calcTotalPrice';
-
-
-export interface CartItem {
-  id: number;
-  count: number;
-  title: string;
-  price: number;
-  imageUrl: string;
-  size?: string;
-}
+import { CartItem } from 'types';
 
 export interface Product {
   id: number;
