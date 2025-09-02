@@ -3,75 +3,58 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addItems } from '../redux/slices/cartSlice';
 import { RootState } from '../redux/store';
 
+import styles from '../scss/components/_cart-item.module.scss';
+import { Product } from 'types';
+
+
+
 interface CartItemProps {
-  product: {
-    id: number;
-    title: string;
-    price: number;
-    imageUrl: string;
-    sizes?: string[];
-  };
+  product: Product;
 }
 
+type NewCartItem = Omit<CartStoreItem, 'count'>;
 
-interface NewCartItem {
-  id: number;
-  title: string;
-  price: number;
-  imageUrl: string;
-  size?: string;
-}
-
-
-interface CartStoreItem {
-  id: number;
+type CartStoreItem = Pick<Product, 'id' | 'title' | 'price' | 'imageUrl'> & { 
+  size?: string; 
   count: number;
-  title: string;
-  price: number;
-  imageUrl: string;
-  size?: string;
-}
+};
 
 const CartItem: React.FC<CartItemProps> = ({ product }) => {
   const dispatch = useDispatch();
-  
-  // Типизированный useSelector
-  const cartItem = useSelector((state: RootState) => 
-    state.cart.items.find((obj: CartStoreItem) => obj.id === product.id)
+
+  const cartItem = useSelector((state: RootState) =>
+    state.cart.items.find((obj: CartStoreItem) => obj.id === product.id),
   );
-  
+
   const [activeSize, setActiveSize] = React.useState<string | undefined>(product.sizes?.[0]);
 
   const addedCount = cartItem ? cartItem.count : 0;
-  
+
   const onClickAdd = (): void => {
     const item: NewCartItem = {
       id: product.id,
       title: product.title,
       price: product.price,
       imageUrl: product.imageUrl,
-      size: activeSize
+      size: activeSize,
     };
 
     dispatch(addItems(item));
   };
 
   return (
-    <div className="cart-block">
-      <img 
-        className="cart-block__image" 
-        src={product.imageUrl} 
-        alt={product.title} 
-      />
-      <h4 className="cart-block__title">{product.title}</h4>
+    <div className={styles.cartItem}>
+      <img className={styles.cartItem__image} src={product.imageUrl} alt={product.title} />
+      <h4 className={styles.cartItem__title}>{product.title}</h4>
+
       {product.sizes && product.sizes.length > 0 && (
-        <div className="cart-block__selector">
+        <div className={styles.cartItem__selector}>
           <ul>
             {product.sizes.map((size: string) => (
               <li
                 key={size}
                 onClick={() => setActiveSize(size)}
-                className={size === activeSize ? 'active' : ''}
+                className={size === activeSize ? `${styles.active}` : ''}
               >
                 {size} см.
               </li>
@@ -79,14 +62,10 @@ const CartItem: React.FC<CartItemProps> = ({ product }) => {
           </ul>
         </div>
       )}
-      
-      <div className="cart-block__bottom">
-        <div className="cart-block__price">от {product.price} ₽</div>
-        <button 
-          className="button button--outline button--add" 
-          onClick={onClickAdd}
-          type="button"
-        >
+
+      <div className={styles.cartItem__bottom}>
+        <div className={styles.cartItem__price}>от {product.price} ₽</div>
+        <button className="button button--outline button--add" onClick={onClickAdd} type="button">
           <svg
             width="12"
             height="12"

@@ -2,15 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { RootState } from '../redux/store'; // Импортируйте тип вашего store
 import CartDrawer from './cart-drawer';
-
-interface CartItem {
-  id: number;
-  count: number;
-  title?: string;
-  price?: number;
-  imageUrl?: string;
-  size?: string;
-}
+import { CartItem } from 'types';
 
 function CartButton() {
   const { items, totalPrice } = useSelector((state: RootState) => state.cart);

@@ -1,10 +1,10 @@
-
 import React from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { addItems, removeItems, minusItem } from '../redux/slices/cartSlice';
 import { RootState } from '../redux/store';
-import { CartItem } from '../redux/slices/cartSlice'; 
+import { CartItem } from '../types'
+import CartDrawerItem from './cart-drawer-item';
 
 import styles from '../scss/components/_cart-drawer.module.scss';
 
@@ -17,18 +17,26 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
   const dispatch = useDispatch();
   const { items, totalPrice } = useSelector((state: RootState) => state.cart);
 
-  const onClickRemoveItems = (id: number): void => {
-    dispatch(minusItem(id));
-  };
+  const onClickRemoveItems = React.useCallback(
+    (id: number) => {
+      dispatch(minusItem(id));
+    },
+    [dispatch],
+  );
 
-  const onClickAddItems = (item: Omit<CartItem, 'count'>): void => {
-    dispatch(addItems(item));
-  };
+  const onClickAddItems = React.useCallback(
+    (item: Omit<CartItem, 'count'>) => {
+      dispatch(addItems(item));
+    },
+    [dispatch],
+  );
 
-  const onRemoveItemCompletely = (id: number): void => {
-    dispatch(removeItems(id));
-  };
-
+  const onRemoveItemCompletely = React.useCallback(
+    (id: number) => {
+      dispatch(removeItems(id));
+    },
+    [dispatch],
+  );
   return (
     <div className={`${styles.cartDrawer} ${isOpen ? styles.open : ''}`}>
       <div className={styles.content}>
@@ -61,73 +69,14 @@ const CartDrawer: React.FC<CartDrawerProps> = ({ isOpen, onClose }) => {
               <p>Корзина пуста</p>
             </div>
           ) : (
-            items.map((item: CartItem) => (
-              <div key={item.id} className={styles.item}>
-                <div className={styles.itemImageContainer}>
-                  <img src={item.imageUrl} alt={item.title} className={styles.itemImage} />
-                </div>
-
-                <div className={styles.itemContent}>
-                  <div className={styles.itemDetails}>
-                    <h4 className={styles.itemName}>{item.title}</h4>
-                    <p className={styles.itemPrice}>{item.price * item.count} ₽</p>
-                  </div>
-
-                  <div className={styles.itemControls}>
-                    <div className={styles.quantityControls}>
-                      <button 
-                        className={styles.quantityBtn} 
-                        onClick={() => onClickRemoveItems(item.id)} 
-                        disabled={item.count <= 1}
-                      >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                          <path
-                            d="M5 12h14"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      </button>
-                      <span className={styles.quantity}>{item.count}</span>
-                      <button 
-                        className={styles.quantityBtn} 
-                        onClick={() => onClickAddItems({
-                          id: item.id,
-                          title: item.title,
-                          price: item.price,
-                          imageUrl: item.imageUrl,
-                          size: item.size
-                        })}
-                      >
-                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
-                          <path
-                            d="M12 5v14M5 12h14"
-                            stroke="currentColor"
-                            strokeWidth="2"
-                            strokeLinecap="round"
-                          />
-                        </svg>
-                      </button>
-                    </div>
-
-                    <button
-                      className={styles.removeBtn}
-                      onClick={() => onRemoveItemCompletely(item.id)}
-                    >
-                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
-                        <path
-                          d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"
-                          stroke="currentColor"
-                          strokeWidth="1.5"
-                          strokeLinecap="round"
-                          strokeLinejoin="round"
-                        />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-              </div>
+            items.map((item) => (
+              <CartDrawerItem
+                key={item.id}
+                item={item}
+                onRemoveOne={onClickRemoveItems}
+                onAddOne={onClickAddItems}
+                onRemoveCompletely={onRemoveItemCompletely}
+              />
             ))
           )}
         </div>

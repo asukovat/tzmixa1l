@@ -3,11 +3,12 @@ import { useSelector, useDispatch } from 'react-redux';
 import { setActiveSort } from '../redux/slices/filterSlice'; 
 import { RootState } from '../redux/store';
 
+import { SORT_OPTIONS } from '../constants';
+
 const Sort: React.FC = () => {
   const dispatch = useDispatch();
   const activeSort = useSelector((state: RootState) => state.filter.activeSort);
-
-  const sortArray: string[] = ['популярности', 'цене', 'алфавиту'];
+;
   const [isVisible, setIsVisible] = React.useState<boolean>(false);
 
   const handleSortClick = (item: string): void => {
@@ -34,7 +35,7 @@ const Sort: React.FC = () => {
       {isVisible && (
         <div className="sort__popup">
           <ul>
-            {sortArray.map((item) => (
+            {SORT_OPTIONS.map((item) => (
               <li
                 key={item}
                 className={activeSort === item ? 'active' : ''}
